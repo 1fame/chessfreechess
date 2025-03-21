@@ -6,6 +6,7 @@ dotenv.config();
 import apiRouter from "./api";
 
 const app = express();
+const port = 9000;
 
 app.use(express.json());
 
@@ -20,10 +21,10 @@ app.get("/", async (req, res) => {
     res.sendFile(path.resolve("src/public/pages/report/index.html"));
 });
 
-app.get("/privacy", async (req, res) => {
+/**app.get("/privacy", async (req, res) => {
     res.sendFile(path.resolve("src/public/pages/privacy/index.html"));
-});
+});**/
 
-app.listen(process.env.PORT, () => {
-    console.log("Server running.");
+app.listen(port, () => {
+    console.log("Server running." + port);
 });

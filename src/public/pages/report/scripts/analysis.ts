@@ -26,8 +26,8 @@ function logAnalysisError(message: string) {
 
 async function evaluate() {
     // Remove and reset CAPTCHA, remove report cards, display progress bar
-    $(".g-recaptcha").css("display", "none");
-    grecaptcha.reset();
+   /** $(".g-recaptcha").css("display", "none");
+    grecaptcha.reset(); */
 
     $("#report-cards").css("display", "none");
     $("#evaluation-progress-bar").css("display", "none");
@@ -171,20 +171,26 @@ async function evaluate() {
         
         if (!positions.some((pos) => !pos.topLines)) {
             clearInterval(stockfishManager);
-
-            logAnalysisInfo("Evaluation complete.");
+            
+            
+            /**logAnalysisInfo("Evaluation complete.");
             $("#evaluation-progress-bar").val(100);
-            $(".g-recaptcha").css("display", "inline");
-            if(!document.hasFocus()){
+            
+            
+            //$(".g-recaptcha").css("display", "inline");
+            /**if(!document.hasFocus()){
                 let snd = new Audio("static/media/ping.mp3");
                 snd.play();
             }
-            $("#secondary-message").html(
+            /**$("#secondary-message").html(
                 "Please complete the CAPTCHA to continue.",
-            );
+            );*/
 
             evaluatedPositions = positions;
             ongoingEvaluation = false;
+            report();
+            console.log("je suis passée chez so");
+            
 
             return;
         }
@@ -297,11 +303,11 @@ function loadReportCards() {
 async function report() {
     // Remove CAPTCHA
     
-    $(".g-recaptcha").css("display", "none");
+    /**$(".g-recaptcha").css("display", "none");
     $("#secondary-message").html("");
     $("#evaluation-progress-bar").attr("value", null);
     logAnalysisInfo("Generating report...");
-    $("#status-message").css("display", "none");
+    $("#status-message").css("display", "none");*/
 
     // Post evaluations and get report results
     try {
@@ -317,7 +323,7 @@ async function report() {
                     }
                     return pos;
                 }),
-                captchaToken: grecaptcha.getResponse() || "none",
+               //captchaToken: grecaptcha.getResponse() || "none",
             }),
         });
 
@@ -347,7 +353,7 @@ $("#review-button").on("click", () => {
 
             whitePlayer = savedAnalysis.players.white;
             blackPlayer = savedAnalysis.players.black;
-            updateBoardPlayers();
+            updateBoardPlayers(); //break
 
             reportResults = savedAnalysis.results;
             loadReportCards();

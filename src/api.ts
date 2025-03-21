@@ -62,14 +62,14 @@ router.post("/parse", async (req, res) => {
 
 router.post("/report", async (req, res) => {
 
-    let { positions, captchaToken }: ReportRequestBody = req.body;
+    let { positions}: ReportRequestBody = req.body;
 
-    if (!positions || !captchaToken) {
+    if (!positions) {
         return res.status(400).json({ message: "Missing parameters." });
     }
 
     // Verify CAPTCHA response token
-    if (process.env.RECAPTCHA_SECRET) {
+    /**if (process.env.RECAPTCHA_SECRET) {
         try {
             let captchaResponse = await fetch("https://www.google.com/recaptcha/api/siteverify", {
                 method: "POST",
@@ -86,7 +86,7 @@ router.post("/report", async (req, res) => {
         } catch (err) {
             return res.status(500).json({ message: "Failed to verify CAPTCHA." });
         }
-    }
+    }*/
 
     // Generate report
     try {

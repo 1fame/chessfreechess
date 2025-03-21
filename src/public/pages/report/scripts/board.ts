@@ -17,7 +17,7 @@ const classificationColours: {[key: string]: string} = {
     "book": "#a88764"
 };
 
-let currentMoveIndex = 0;
+let currentMoveIndex = 0;//ooook nique ta mère
 
 let boardFlipped = false;
 
@@ -99,7 +99,7 @@ async function drawBoard(fen: string) {
                 y * (BOARD_SIZE / 8), 
                 (BOARD_SIZE / 8), 
                 (BOARD_SIZE / 8)
-            );
+            ); //huits cases
         }
     }
 
@@ -148,8 +148,8 @@ async function drawBoard(fen: string) {
         ctx.globalAlpha = 1;
     }
 
-    // Draw pieces
-    let fenBoard = fen.split(" ")[0];
+    // Draw pieces 
+    let fenBoard = fen.split(" ")[0]; //fen ex: "8/pQRq2pk/4p2p/3r1p2/3P4/4P3/PP3PPP/6K1 b - - 0 1"
     let x = boardFlipped ? 7 : 0, y = x;
     
     for (let character of fenBoard) {
@@ -216,7 +216,7 @@ async function drawBoard(fen: string) {
             ctx.globalAlpha = 1;
         }
     }
-}
+} // marche pas
 
 function updateBoardPlayers() {
     // Get profiles depending on board orientation
@@ -243,7 +243,7 @@ function traverseMoves(moveCount: number) {
     // Clamp move index to number of moves in game
     let previousMoveIndex = currentMoveIndex;
     currentMoveIndex = Math.max(
-        Math.min(currentMoveIndex + moveCount, reportResults.positions.length - 1),
+        Math.min(currentMoveIndex + moveCount, positions.length - 1),
         0,
     );
 

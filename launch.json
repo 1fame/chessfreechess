@@ -1,0 +1,16 @@
+{
+    "version": "0.2.0",
+    "configuration": [
+        {
+            "type": "chrome",
+            "request": "launch",
+            "name": "app mode target",
+            "program": "${workspaceFolder}/src/index.ts",
+            "url": "http://localhost:8000",
+            "preLaunchTask": "tsc: build - tsconfig.json",
+            "outFiles": [ "${workspaceFolder}/**/*.js" ]
+        }
+    ],
+
+    
+}

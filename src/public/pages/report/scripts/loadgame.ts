@@ -37,7 +37,7 @@ function generateGameListing(game: Game): JQuery<HTMLDivElement> {
         closeModal();
     });
 
-    let timeClass = $("<b>");
+    let timeClass = $("<b>"); //cadence  
     timeClass.html(game.timeClass.replace(/^./, game.timeClass.charAt(0).toUpperCase()));
 
     let players = $("<span>");
